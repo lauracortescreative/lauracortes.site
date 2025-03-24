@@ -22,6 +22,37 @@
             margin: 0 auto;
         }
         
+        /* Intro Section Styles */
+        .intro-section {
+            margin: 40px 0 100px 0;
+        }
+        
+        .intro-content {
+            max-width: 800px;
+        }
+        
+        .intro-content h1 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+        
+        .intro-content p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        .intro-content em {
+            font-style: italic;
+            color: #555;
+        }
+        
+        .intro-content strong {
+            font-weight: 500;
+            font-size: 24px;
+        }
+        
         /* Header Styles */
         header {
             display: flex;
@@ -145,6 +176,16 @@
             max-width: 800px;
         }
         
+        .details-description a {
+            color: #333;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .details-description a:hover {
+            color: #888;
+        }
+        
         .details-gallery {
             display: grid;
             grid-template-columns: 1fr;
@@ -155,6 +196,13 @@
             width: 100%;
             height: auto;
             border-radius: 4px;
+        }
+        
+        .gallery-video {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            background-color: #000;
         }
         
         /* About Section */
@@ -181,12 +229,29 @@
             background-size: cover;
             background-position: center;
             border-radius: 4px;
+            position: sticky;
+            top: 120px;
         }
         
         h2 {
             font-size: 24px;
             margin-bottom: 20px;
             font-weight: 500;
+        }
+        
+        .about-subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .conference-list, .article-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .conference-list li, .article-list li {
+            margin-bottom: 8px;
         }
         
         /* Footer */
@@ -264,14 +329,21 @@
     </header>
     
     <main>
+        <section id="intro" class="intro-section">
+            <div class="intro-content">
+                <h1>Interactive <em>storyliving</em> <em>Creative director</em>.</h1>
+                <p>Olá and welcome. You just landed on my portfolio. Lucky you! My name is pronounced "Lah-ooh-ra Cour-tsh." I am a Portuguese-born, UK-trained, Toronto—and Lisbon-based immersive creative director. If you love creative tech and color, you're in for a treat. Enjoy! <strong>☞</strong></p>
+            </div>
+        </section>
+        
         <section id="projects">
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card" data-id="1">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(1)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">SIREN</h3>
-                        <p class="project-category">3D Visuals & Motion Design</p>
+                        <h3 class="project-title">WILD CITIES AR</h3>
+                        <p class="project-category">AR Story App</p>
                     </div>
                 </div>
                 
@@ -279,18 +351,25 @@
                 <div class="project-details" id="project-1">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">SIREN — 3D Motion Visuals</h3>
-                            <p class="details-category">3D Visuals & Motion Design</p>
+                            <h3 class="details-title">Personal Project: Wild Cities AR</h3>
+                            <p class="details-category">📱 AR Story App iOS + Android</p>
                         </div>
                         <div class="details-description">
-                            <p>Siren is a personal project exploring 3D motion design and visual storytelling. The series investigates themes of transformation and digital identity through abstract visual language.</p>
+                            <p>💡 Wild Cities AR is an immersive, voice-activated storytelling app for iOS and Android. It boosts kids' eco-empathy by empowering them to develop their virtual forest right in their backyards - or living rooms. Climate change, deforestation, and urbanization affect the world in ways that impact us all. Still, the loss of natural habitats and wildlife is invisible to many urban kids.</p>
                             <br>
-                            <p>Using Cinema 4D and Octane Renderer, I created a series of animated sequences that blend organic and digital elements. The project was featured in Adobe's Behance Graphic Design gallery and received recognition at the Barcelona Design Week.</p>
+                            <p>Wild Cities AR allows kids to experience nature anywhere, teaching them about urban ecology, inspiring them to take responsibility for local wildlife, and empowering them to help fight climate change. By helping restore The Magic Tree, kids will discover their forests' hidden secrets and learn how to work together to care for our planet.</p>
+                            <br>
+                            <p>Wild Cities AR was created by Toronto's design and experience team at Jam3 in collaboration with a-Bahn, the Canadian Media Fund, the country of Luxembourg, and the City of Toronto.</p>
+                            <br>
+                            <p>🧠 Creative Director at Jam3 | Collaborators: a-Bahn, CMF, City of Toronto, Luxembourg | Date: 2021</p>
+                            <p>🔗 <a href="#">Website</a> 📱 <a href="#">App Store</a> | <a href="#">Google Play Store</a></p>
+                            <p>🏆 SMART Award Finalist at FIPADOC</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Siren motion design frame 1">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Siren motion design frame 2">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Siren motion design frame 3">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -299,8 +378,8 @@
                 <div class="project-card" data-id="2">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(2)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">TERRA MATER</h3>
-                        <p class="project-category">Exhibition Design</p>
+                        <h3 class="project-title">THE NFB: YESTERDAY, TODAY, TOMORROW</h3>
+                        <p class="project-category">Interactive Data Viz</p>
                     </div>
                 </div>
                 
@@ -308,19 +387,22 @@
                 <div class="project-details" id="project-2">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">TERRA MATER — Exhibition</h3>
-                            <p class="details-category">Exhibition Design</p>
+                            <h3 class="details-title">The NFB: Yesterday, Today, Tomorrow</h3>
+                            <p class="details-category">📈 Interactive Data Viz</p>
                         </div>
                         <div class="details-description">
-                            <p>Terra Mater was an exhibition design project for the Barcelona Museum of Contemporary Art, focusing on environmental awareness and our relationship with nature.</p>
+                            <p>💡 A beautiful project between Jam3 and the National Film Board of Canada that shows our everyday experiences during Covid-19 - a collective diary of what we've felt during the "new normal." The interactive website uses Twitter data to illustrate our thoughts and feelings during this unprecedented challenge. We hope we learn together so this pain doesn't go to waste.</p>
                             <br>
-                            <p>The challenge was to create an immersive experience that educated visitors on environmental issues while inspiring positive action. Working with a multidisciplinary team, I developed the visual identity, environmental graphics, and interactive installations that guided visitors through the narrative journey.</p>
+                            <p>🧠 Creative Director at Jam3 | Client: The NFB | Date: 2020</p>
+                            <p>🔗 <a href="#">Website</a></p>
+                            <p>🏆 Webby Awards 2021 NetArt Nominee | November 2020 FWA Site of Day</p>
+                            <p>🏆 ADCC Creative Data Bronze | Website (Design) Bronze | Website (motion and animation) Bronze</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Terra Mater exhibition entrance">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Terra Mater main hall">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Terra Mater interactive display">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Terra Mater signage system">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -329,8 +411,8 @@
                 <div class="project-card" data-id="3">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(3)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">GRADIENT EXPLORATIONS</h3>
-                        <p class="project-category">Visual Design</p>
+                        <h3 class="project-title">GOOGLE, DISNEY+ & LUCAS FILMS: THE MANDALORIAN AR EXPERIENCE</h3>
+                        <p class="project-category">AR App</p>
                     </div>
                 </div>
                 
@@ -338,18 +420,21 @@
                 <div class="project-details" id="project-3">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">GRADIENT EXPLORATIONS</h3>
-                            <p class="details-category">Visual Design</p>
+                            <h3 class="details-title">Google, Disney+ & Lucas Films: The Mandalorian AR Experience</h3>
+                            <p class="details-category">📱 AR, Pixel 5, Android</p>
                         </div>
                         <div class="details-description">
-                            <p>A series of experimental visual designs exploring the creative potential of color gradients. This ongoing project investigates how gradients can evoke emotions, create depth, and communicate complex ideas through simple visual means.</p>
+                            <p>💡 The "Mandalorian AR Experience" by Google is a remarkable showcase of cutting-edge technology. This app offers various engaging features and functionality, allowing fans to enter the Star Wars Universe. Users can embark on thrilling blaster battles, interact with beloved characters such as Baby Yoda, and explore intricately detailed environments from the series. Leveraging augmented reality, the app seamlessly blends reality and fantasy, transforming everyday surroundings into an immersive galaxy. The success of Google's Mandalorian AR Experience not only captivated the Star Wars community but also highlighted the immense storytelling potential of augmented reality technology, setting a new standard for fan engagement and brand extension in the digital age.</p>
                             <br>
-                            <p>The project includes digital artwork, print applications, and motion studies that showcase different approaches to gradient design. Select pieces from this series have been used in commercial projects for clients in the fashion and tech industries.</p>
+                            <p>🧠 Creative Director at Jam3 | Client: Google, Disney+, Lucas Films | 3D Partner: Trigger | Date: 2020</p>
+                            <p>🔗 <a href="#">Google Play Store</a></p>
+                            <p>🏆 ADCC Augmented Reality & Virtual Reality Bronze</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Gradient exploration 1">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Gradient exploration 2">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Gradient exploration 3">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -358,8 +443,8 @@
                 <div class="project-card" data-id="4">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(4)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">TYPE SPECIMENS</h3>
-                        <p class="project-category">Typography</p>
+                        <h3 class="project-title">AMAZON PRIME: THE BOYS, BABY LASER TAG</h3>
+                        <p class="project-category">AR FPS Game</p>
                     </div>
                 </div>
                 
@@ -367,19 +452,22 @@
                 <div class="project-details" id="project-4">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">TYPE SPECIMENS</h3>
-                            <p class="details-category">Typography</p>
+                            <h3 class="details-title">Amazon Prime: The Boys, Baby Laser Tag</h3>
+                            <p class="details-category">📱 AR FPS Game, iOS + Android</p>
                         </div>
                         <div class="details-description">
-                            <p>Type Specimens is a personal exploration of typography and editorial design. The project examines how different typefaces can establish mood, impact readability, and define the character of design work.</p>
+                            <p>💡 Amazon's "The Boys Baby Laser Tag AR Experience" is a groundbreaking augmented reality app that brings the world of the hit series "The Boys" to life interactively and engagingly. Using AR technology, players can participate in laser tag battles with virtual weapons and iconic show characters, all within their real-world surroundings. This innovative fusion of the physical and virtual realms not only caters to fans' desires but also exemplifies the potential of AR for immersive fan engagement. By turning everyday environments into action-packed battlefields, this app offers a unique and thrilling extension of "The Boys" universe, keeping fans engrossed in the show's world even between episodes.</p>
                             <br>
-                            <p>The collection includes a series of type specimens, editorial layouts, and typographic posters that showcase both classic and contemporary typefaces. Each design highlights the unique characteristics and potential applications of the featured typeface.</p>
+                            <p>🧠 Creative Director at Jam3 | Client: Amazon Prime | Agency: AKQA | 3D Partner: Rodeo FX | Date: 2019</p>
+                            <p>🔗 <a href="#">App Store</a> | <a href="#">Google Play Store</a></p>
+                            <p>🏆 Webby Awards 2021 Augmented Reality and Application Honorees</p>
+                            <p>🏆 ADCC Augmented Reality & Virtual Reality Bronze | Games Bronze</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Type specimen 1">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Type specimen 2">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Editorial layout">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Typographic poster">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -388,8 +476,8 @@
                 <div class="project-card" data-id="5">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(5)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">MOTION GRAPHICS REEL</h3>
-                        <p class="project-category">Motion Design</p>
+                        <h3 class="project-title">CERN & GOOGLE: BIG BANG AR</h3>
+                        <p class="project-category">AR App</p>
                     </div>
                 </div>
                 
@@ -397,18 +485,21 @@
                 <div class="project-details" id="project-5">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">MOTION GRAPHICS REEL</h3>
-                            <p class="details-category">Motion Design</p>
+                            <h3 class="details-title">CERN & Google: Big Bang AR</h3>
+                            <p class="details-category">📱 AR App, iOS + Android</p>
                         </div>
                         <div class="details-description">
-                            <p>A compilation of motion design work created for various commercial and personal projects. The reel showcases my approach to animation, timing, and visual storytelling through motion.</p>
+                            <p>💡 The CERN & Google Big Bang AR project is a collaborative effort to use augmented reality to explore the universe's origins from the moments following the Big Bang. This innovative app lets users interact with virtual particles, witness galaxy formation, and delve into fundamental cosmic building blocks. Combining CERN's expertise in particle physics with Google's technology, the project makes complex science accessible. It sparks curiosity about the cosmos, showcasing the potential of AR for science communication and education.</p>
                             <br>
-                            <p>Projects featured in the reel include broadcast graphics, title sequences, brand animations, and experimental motion studies. Each project demonstrates different techniques and styles, from minimalist 2D animation to complex 3D work.</p>
+                            <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Arts & Culture | Date: 2018</p>
+                            <p>🔗 <a href="#">Google Project Page</a></p>
+                            <p>🏆 Nominated for a Children's BAFTA</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Motion graphics still 1">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Motion graphics still 2">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Motion graphics still 3">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -417,8 +508,8 @@
                 <div class="project-card" data-id="6">
                     <div class="project-thumbnail" style="background-image: url('/api/placeholder/600/400');" onclick="toggleProject(6)"></div>
                     <div class="project-info">
-                        <h3 class="project-title">BRAND IDENTITY PROJECTS</h3>
-                        <p class="project-category">Branding</p>
+                        <h3 class="project-title">ROSIE RIOS & GOOGLE: NOTABLE WOMEN AR</h3>
+                        <p class="project-category">AR App</p>
                     </div>
                 </div>
                 
@@ -426,19 +517,21 @@
                 <div class="project-details" id="project-6">
                     <div class="details-container">
                         <div class="details-header">
-                            <h3 class="details-title">BRAND IDENTITY PROJECTS</h3>
-                            <p class="details-category">Branding</p>
+                            <h3 class="details-title">Rosie Rios & Google: Notable Women AR</h3>
+                            <p class="details-category">📱 AR App, iOS + Android</p>
                         </div>
                         <div class="details-description">
-                            <p>A selection of brand identity projects for clients across various industries. Each project involved developing comprehensive visual systems that communicate the client's values and connect with their target audience.</p>
+                            <p>💡 The collaboration between Rosie Rios and Google on the Notable Women AR project is a visionary initiative that blends augmented reality technology with celebrating influential women in history. Rosie Rios, former Treasurer of the United States, and Google have combined their expertise to create an interactive AR experience that brings to life the stories of remarkable women. This project allows users to virtually meet and learn about female trailblazers, innovators, and change-makers who have significantly contributed to various fields. By leveraging AR, it offers an engaging platform to educate, inspire, and honour the achievements of these exceptional women, ultimately promoting awareness and recognition of their invaluable contributions to society and history.</p>
                             <br>
-                            <p>My branding process focuses on understanding the client's business objectives, market position, and audience needs before developing visual concepts. The final deliverables typically include logo design, typography, color palettes, and brand applications across print and digital media.</p>
+                            <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Creative Labs | Date: 2018</p>
+                            <p>🔗 <a href="#">Google Project Page</a></p>
+                            <p>🏆 December 2018 FWA of Day</p>
                         </div>
                         <div class="details-gallery">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Brand identity project 1">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Brand identity project 2">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Brand applications">
-                            <img class="gallery-image" src="/api/placeholder/800/600" alt="Brand guidelines">
+                            <video class="gallery-video" controls autoplay muted loop>
+                                <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -449,15 +542,44 @@
             <h2>ABOUT</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm Laura Cortes, a Visual Designer with a passion for creating meaningful visual experiences. My work spans multiple disciplines including digital design, motion graphics, and exhibition design.</p>
+                    <p><em>I am a Global trotter</em>. ⚐⚐ North American and European speaker. Clients and developers' BFF.</p>
+                    <p>Today, you can find me between Lisbon, Toronto and sometimes London…</p>
+                    <p>… designing interactive and immersive storytelling XR experiences for TikTok, Google, The NFB, Pepsi, Samsung, Amazon, Esteé Lauder, Netflix and more.</p>
                     <br>
-                    <p>With a background in Fine Arts and a Master's in Design from ELISAVA School of Design in Barcelona, I approach each project with a blend of artistic sensitivity and strategic thinking. My design process is centered on research, experimentation, and attention to detail.</p>
+                    <p>When not drowning in an endless sea of Zoom calls, I am busy trying to find and mentor Young talent.</p>
+                    <p>I am the founder of firecracker.collective, a worldwide community of freelancers dedicated to mentorship and knowledge sharing.</p>
+                    <p>☏ For more, check out my LinkedIn page.</p>
                     <br>
-                    <p>I've collaborated with clients and studios across Europe, including Estudio Mariscal, Barcelona Design Museum, and various technology startups. My work has been recognized in publications like IdN Magazine and Communication Arts.</p>
+                    <h3 class="about-subtitle">Conferences & Publications</h3>
+                    <p>I have spoken at the following conferences.</p>
                     <br>
-                    <p>When I'm not designing, you can find me exploring photography, attending design exhibitions, and seeking inspiration in Barcelona's vibrant cultural scene.</p>
+                    <ul class="conference-list">
+                        <li>Microsoft XR Steps Up event, May 2021</li>
+                        <li>Women in Music, Leeds, Oct. 2018</li>
+                        <li>Music Connected, London, Apr. 2018</li>
+                        <li>Generator Music Class, Newcastle, Nov. 2017</li>
+                        <li>Talk UX, Taiwan, Oct. 2017</li>
+                        <li>BBC Introducing Amplify, London, Oct. 2017</li>
+                        <li>VR World, London, May 2017</li>
+                        <li>Bump Festival, Belgium, Jun. 2016</li>
+                        <li>Push Conference, Munich, Oct. 2015</li>
+                        <li>Generate Conference, London, Oct. 2015</li>
+                        <li>Talk UX, Manchester, Mar. 2015</li>
+                    </ul>
                     <br>
-                    <p>Based in Barcelona, Spain.</p>
+                    <p>And written a few articles.</p>
+                    <br>
+                    <ul class="article-list">
+                        <li>XR, MR, AR, VR…</li>
+                        <li>Design Is/Not Art, May 2017</li>
+                        <li>The Ux of VR, Jan. 2016</li>
+                        <li>The End of Agency Vs. Production, Feb. 2016</li>
+                        <li>A Roundtable Discussion About Virtual Reality, Apr. 2015</li>
+                    </ul>
+                    <br>
+                    <p>Get in touch if you have a creative opportunity (or if not, get in touch anyway)</p>
+                    <p><a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
+                    <p>You can also message me directly on LinkedIn.</p>
                 </div>
                 <div class="about-image" style="background-image: url('/api/placeholder/600/800');"></div>
             </div>
@@ -466,7 +588,7 @@
     
     <footer id="contact">
         <h2>CONTACT</h2>
-        <p>For project inquiries or collaborations: <a href="mailto:hello@lauracortes.site">hello@lauracortes.site</a></p>
+        <p>For project inquiries or collaborations: <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-behance"></i></a>
