@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Cortes — Visual Designer</title>
     
-<style>
+ <style>
         /* Base Styles */
         * {
             margin: 0;
@@ -100,10 +100,11 @@
         
         /* Project Grid */
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             max-width: 800px;
+            margin: 0 auto;
         }
         
         .project-card {
@@ -296,10 +297,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .project-details {
-                grid-column: span 1;
-            }
-            
             header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -316,6 +313,10 @@
             
             .about-image {
                 height: 300px;
+            }
+            
+            .project-thumbnail {
+                height: 250px;
             }
         }
     </style>
