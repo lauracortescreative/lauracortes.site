@@ -18,22 +18,35 @@
             background-color: #e1ccbe;
             color: #333;
             line-height: 1.6;
-            padding: 20px;
+            padding: 0; /* Removed padding to allow full-width sections */
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+        
+        .content-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         /* Intro Section Styles */
         .intro-section {
-            margin: 40px 0 100px 0;
+            margin: 0 0 100px 0; /* Removed top margin */
             background-color: rgba(20, 61, 210, 1);
-            padding: 60px 80px;
-            border-radius: 8px;
-            color:  rgba(225, 204, 190, 1);
+            padding: 60px 0; /* Changed padding to vertical only */
+            color: rgba(225, 204, 190, 1);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
         }
         
         .intro-content {
             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 80px;
         }
         
         .intro-content h1 {
@@ -46,7 +59,6 @@
         .intro-content p {
             font-size: 32px;
             line-height: 1.7;
-           
         }
         
         .intro-content em {
@@ -59,18 +71,29 @@
             font-size: 20px;
         }
         
+        .intro-content a {
+            color: #ffcc00; /* Changed link color to be more visible */
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .intro-content a:hover {
+            color: white;
+        }
+        
         /* Header Styles */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10px;
+            padding: 20px;
             margin-bottom: 40px;
             position: sticky;
             top: 0;
             background-color: rgba(225, 204, 190, 0.95);
             z-index: 100;
             backdrop-filter: blur(10px);
+            width: 100%;
         }
         
         .logo {
@@ -104,13 +127,14 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            max-width: 1800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         .project-card {
             margin-bottom: 20px;
             transition: all 0.5s ease;
+            width: 100%;
         }
         
         .project-thumbnail {
@@ -148,7 +172,7 @@
             overflow: hidden;
             transition: max-height 0.6s ease, opacity 0.3s ease;
             opacity: 0;
-            grid-column: span 2;
+            width: 100%;
             margin-top: -20px;
         }
         
@@ -185,7 +209,7 @@
         }
         
         .details-description a {
-            color: #333;
+            color: rgba(20, 61, 210, 1);
             text-decoration: underline;
             transition: color 0.3s ease;
         }
@@ -221,11 +245,11 @@
         
         .about-content {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Changed to column for single column layout */
             gap: 40px;
             margin: 40px 0 100px 0;
             background-color: #e1ccbe;
-            padding: 60px 80px;
+            padding: 60px 40px;
             border-radius: 8px;
             color: hsla(227.05,82.61%,45.1%,1);
         }
@@ -236,15 +260,23 @@
             line-height: 1.8;
         }
         
+        .about-text a {
+            color: rgba(20, 61, 210, 1);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .about-text a:hover {
+            color: #555;
+        }
+        
         .about-image {
-            flex: 1;
-            max-width: 250;
-            height: 250;
+            width: 250px;
+            height: 250px;
             background-size: cover;
             background-position: center;
-            border-radius: 4px;
-            position: sticky;
-            top: 120px;
+            border-radius: 50%; /* Made image circular */
+            margin: 0 auto; /* Center the image */
         }
         
         h2 {
@@ -268,10 +300,27 @@
             margin-bottom: 8px;
         }
         
+        /* Video Gallery */
+        .video-gallery {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .video-item {
+            width: 100%;
+        }
+        
+        .video-item h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
         /* Footer */
         footer {
             margin-top: 80px;
-            padding: 40px 0;
+            padding: 40px 20px;
             text-align: left;
             border-top: 1px solid #eee;
         }
@@ -289,7 +338,7 @@
         }
         
         .social-links a:hover {
-            color: #888;
+            color: rgba(20, 61, 210, 1);
         }
         
         .footer-text {
@@ -300,8 +349,12 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .project-grid {
-                grid-template-columns: 1fr;
+            .intro-content {
+                padding: 0 20px;
+            }
+            
+            .intro-content p {
+                font-size: 24px;
             }
             
             header {
@@ -318,17 +371,36 @@
                 margin-right: 20px;
             }
             
-            .about-image {
-                height: 300px;
+            .project-thumbnail {
+                height: 350px;
             }
             
+            .about-content {
+                padding: 40px 20px;
+            }
+            
+            .about-text {
+                font-size: 24px;
+            }
+            
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .project-thumbnail {
                 height: 250px;
+            }
+            
+            .about-image {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
     
-       <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -347,256 +419,188 @@
         <section id="intro" class="intro-section">
             <div class="intro-content">
                 <p>Laura Cortes <em>[she/her]</em> [pronounced "Lah-ooh-ra Cour-tsh"] is an independent <em>storyliving</em> creative director whose career has followed the evolution of interactive storytelling across continents and platforms. Since establishing her presence between Lisbon and Toronto, she has brought her distinctive vision to global brands including Adidas, Netflix, and Google.
-<br>Currently dividing her time between providing UX/Creative Direction for AI SaaS companies and co-steering <a href="https://www.linkedin.com/company/spoonful-studios/">Spoonful Studios</a>, an AI-powered transmedia production studio, Laura brings strategic leadership to innovative projects at the intersection of immersive technology, design, and storytelling.</p>
-
+                <br>Currently dividing her time between providing UX/Creative Direction for AI SaaS companies and co-steering <a href="https://www.linkedin.com/company/spoonful-studios/">Spoonful Studios</a>, an AI-powered transmedia production studio, Laura brings strategic leadership to innovative projects at the intersection of immersive technology, design, and storytelling.</p>
             </div>
         </section>
         
-        <section id="projects">
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-id="1">
-                    <div class="project-thumbnail" style="background-image: url('/WC_thumb.jpg');" onclick="toggleProject(1)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">Wild Cities AR</h3>
-                        <p class="project-category">AR STORY APP</p>
-                    </div>
-                </div>
-                
-                <!-- Project 1 Details -->
-                <div class="project-details" id="project-1">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">Personal Project: Wild Cities AR</h3>
-                            <p class="details-category">📱 AR Story App iOS + Android</p>
-                        </div>
-                        <div class="details-description">
-                            <p>💡 Wild Cities AR is an immersive, voice-activated storytelling app for iOS and Android. It boosts kids' eco-empathy by empowering them to develop their virtual forest right in their backyards - or living rooms. Climate change, deforestation, and urbanization affect the world in ways that impact us all. Still, the loss of natural habitats and wildlife is invisible to many urban kids.</p>
-                            <br>
-                            <p>Wild Cities AR allows kids to experience nature anywhere, teaching them about urban ecology, inspiring them to take responsibility for local wildlife, and empowering them to help fight climate change. By helping restore The Magic Tree, kids will discover their forests' hidden secrets and learn how to work together to care for our planet.</p>
-                            <br>
-                            <p>Wild Cities AR was created by Toronto's design and experience team at Jam3 in collaboration with a-Bahn, the Canadian Media Fund, the country of Luxembourg, and the City of Toronto.</p>
-                            <br>
-                            <p>🧠 Creative Director at Jam3 | Collaborators: a-Bahn, CMF, City of Toronto, Luxembourg </p>
-                            <p>🔗 <a href="#">Website</a> 📱 <a href="#">App Store</a> | <a href="#">Google Play Store</a></p>
-                            <p>🏆 SMART Award Finalist at FIPADOC</p>
-                        </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+        <div class="content-container">
+            <section id="projects">
+                <div class="project-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-id="1">
+                        <div class="project-thumbnail" style="background-image: url('/WC_thumb.jpg');" onclick="toggleProject(1)"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Wild Cities AR</h3>
+                            <p class="project-category">AR STORY APP</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card" data-id="2">
-                    <div class="project-thumbnail" style="background-image: url('/NFB_thumb.jpg');" onclick="toggleProject(2)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">The NFB: Yesterday, Today, Tomorrow</h3>
-                        <p class="project-category">INTERACTIVE DATA VIZ</p>
-                    </div>
-                </div>
-                
-                <!-- Project 2 Details -->
-                <div class="project-details" id="project-2">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">The NFB: Yesterday, Today, Tomorrow</h3>
-                            <p class="details-category">📈 Interactive Data Viz</p>
-                        </div>
-                        <div class="details-description">
-                            <p>💡 A beautiful project between Jam3 and the National Film Board of Canada that shows our everyday experiences during Covid-19 - a collective diary of what we've felt during the "new normal." The interactive website uses Twitter data to illustrate our thoughts and feelings during this unprecedented challenge. We hope we learn together so this pain doesn't go to waste.</p>
-                            <br>
-                            <p>🧠 Creative Director at Jam3 | Client: The NFB </p>
-                            <p>🔗 <a href="#">Website</a></p>
-                            <p>🏆 Webby Awards 2021 NetArt Nominee | November 2020 FWA Site of Day</p>
-                            <p>🏆 ADCC Creative Data Bronze | Website (Design) Bronze | Website (motion and animation) Bronze</p>
-                        </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card" data-id="4">
+                        <div class="project-thumbnail" style="background-image: url('/BOYS_thumb.jpg');" onclick="toggleProject(4)"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">AMAZON PRIME: THE BOYS, BABY LASER TAG</h3>
+                            <p class="project-category">AR FPS Game</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card" data-id="3">
-                    <div class="project-thumbnail" style="background-image: url('/MANDO_thumb.jpg');" onclick="toggleProject(3)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">GOOGLE, DISNEY+ & LUCAS FILMS: THE MANDALORIAN AR EXPERIENCE</h3>
-                        <p class="project-category">AR App</p>
-                    </div>
-                </div>
-                
-                <!-- Project 3 Details -->
-                <div class="project-details" id="project-3">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">Google, Disney+ & Lucas Films: The Mandalorian AR Experience</h3>
-                            <p class="details-category">📱 AR, Pixel 5, Android</p>
-                        </div>
-                        <div class="details-description">
-                            <p>💡 The "Mandalorian AR Experience" by Google is a remarkable showcase of cutting-edge technology. This app offers various engaging features and functionality, allowing fans to enter the Star Wars Universe. Users can embark on thrilling blaster battles, interact with beloved characters such as Baby Yoda, and explore intricately detailed environments from the series. Leveraging augmented reality, the app seamlessly blends reality and fantasy, transforming everyday surroundings into an immersive galaxy. The success of Google's Mandalorian AR Experience not only captivated the Star Wars community but also highlighted the immense storytelling potential of augmented reality technology, setting a new standard for fan engagement and brand extension in the digital age.</p>
-                            <br>
-                            <p>🧠 Creative Director at Jam3 | Client: Google, Disney+, Lucas Films | 3D Partner: Trigger </p>
-                            <p>🔗 <a href="#">Google Play Store</a></p>
-                            <p>🏆 ADCC Augmented Reality & Virtual Reality Bronze</p>
-                        </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                    
+                    <!-- Project 4 Details -->
+                    <div class="project-details" id="project-4">
+                        <div class="details-container">
+                            <div class="details-header">
+                                <h3 class="details-title">Amazon Prime: The Boys, Baby Laser Tag</h3>
+                                <p class="details-category">📱 AR FPS Game, iOS + Android</p>
+                            </div>
+                            <div class="details-description">
+                                <p>💡 Amazon's "The Boys Baby Laser Tag AR Experience" is a groundbreaking augmented reality app that brings the world of the hit series "The Boys" to life interactively and engagingly. Using AR technology, players can participate in laser tag battles with virtual weapons and iconic show characters, all within their real-world surroundings. This innovative fusion of the physical and virtual realms not only caters to fans' desires but also exemplifies the potential of AR for immersive fan engagement. By turning everyday environments into action-packed battlefields, this app offers a unique and thrilling extension of "The Boys" universe, keeping fans engrossed in the show's world even between episodes.</p>
+                                <br>
+                                <p>🧠 Creative Director at Jam3 | Client: Amazon Prime | Agency: AKQA | 3D Partner: Rodeo FX </p>
+                                <p>🔗 <a href="#">App Store</a> | <a href="#">Google Play Store</a></p>
+                                <p>🏆 Webby Awards 2021 Augmented Reality and Application Honorees</p>
+                                <p>🏆 ADCC Augmented Reality & Virtual Reality Bronze | Games Bronze</p>
+                            </div>
+                            <div class="details-gallery">
+                                <video class="gallery-video" controls autoplay muted loop>
+                                    <source src="#" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card" data-id="4">
-                    <div class="project-thumbnail" style="background-image: url('/BOYS_thumb.jpg');" onclick="toggleProject(4)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">AMAZON PRIME: THE BOYS, BABY LASER TAG</h3>
-                        <p class="project-category">AR FPS Game</p>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card" data-id="5">
+                        <div class="project-thumbnail" style="background-image: url('/BB_thumb.jpg');" onclick="toggleProject(5)"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">CERN & GOOGLE: BIG BANG AR</h3>
+                            <p class="project-category">AR App</p>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Project 4 Details -->
-                <div class="project-details" id="project-4">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">Amazon Prime: The Boys, Baby Laser Tag</h3>
-                            <p class="details-category">📱 AR FPS Game, iOS + Android</p>
+                    
+                    <!-- Project 5 Details -->
+                    <div class="project-details" id="project-5">
+                        <div class="details-container">
+                            <div class="details-header">
+                                <h3 class="details-title">CERN & Google: Big Bang AR</h3>
+                                <p class="details-category">📱 AR App, iOS + Android</p>
+                            </div>
+                            <div class="details-description">
+                                <p>💡 The CERN & Google Big Bang AR project is a collaborative effort to use augmented reality to explore the universe's origins from the moments following the Big Bang. This innovative app lets users interact with virtual particles, witness galaxy formation, and delve into fundamental cosmic building blocks. Combining CERN's expertise in particle physics with Google's technology, the project makes complex science accessible. It sparks curiosity about the cosmos, showcasing the potential of AR for science communication and education.</p>
+                                <br>
+                                <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Arts & Culture </p>
+                                <p>🔗 <a href="#">Google Project Page</a></p>
+                                <p>🏆 Nominated for a Children's BAFTA</p>
+                            </div>
+                            <div class="details-gallery">
+                                <video class="gallery-video" controls autoplay muted loop>
+                                    <source src="#" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
-                        <div class="details-description">
-                            <p>💡 Amazon's "The Boys Baby Laser Tag AR Experience" is a groundbreaking augmented reality app that brings the world of the hit series "The Boys" to life interactively and engagingly. Using AR technology, players can participate in laser tag battles with virtual weapons and iconic show characters, all within their real-world surroundings. This innovative fusion of the physical and virtual realms not only caters to fans' desires but also exemplifies the potential of AR for immersive fan engagement. By turning everyday environments into action-packed battlefields, this app offers a unique and thrilling extension of "The Boys" universe, keeping fans engrossed in the show's world even between episodes.</p>
-                            <br>
-                            <p>🧠 Creative Director at Jam3 | Client: Amazon Prime | Agency: AKQA | 3D Partner: Rodeo FX </p>
-                            <p>🔗 <a href="#">App Store</a> | <a href="#">Google Play Store</a></p>
-                            <p>🏆 Webby Awards 2021 Augmented Reality and Application Honorees</p>
-                            <p>🏆 ADCC Augmented Reality & Virtual Reality Bronze | Games Bronze</p>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="project-card" data-id="6">
+                        <div class="project-thumbnail" style="background-image: url('/NW_thumb.jpg');" onclick="toggleProject(6)"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">ROSIE RIOS & GOOGLE: NOTABLE WOMEN AR</h3>
+                            <p class="project-category">AR App</p>
                         </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                    </div>
+                    
+                    <!-- Project 6 Details -->
+                    <div class="project-details" id="project-6">
+                        <div class="details-container">
+                            <div class="details-header">
+                                <h3 class="details-title">Rosie Rios & Google: Notable Women AR</h3>
+                                <p class="details-category">📱 AR App, iOS + Android</p>
+                            </div>
+                            <div class="details-description">
+                                <p>💡 The collaboration between Rosie Rios and Google on the Notable Women AR project is a visionary initiative that blends augmented reality technology with celebrating influential women in history. Rosie Rios, former Treasurer of the United States, and Google have combined their expertise to create an interactive AR experience that brings to life the stories of remarkable women. This project allows users to virtually meet and learn about female trailblazers, innovators, and change-makers who have significantly contributed to various fields. By leveraging AR, it offers an engaging platform to educate, inspire, and honour the achievements of these exceptional women, ultimately promoting awareness and recognition of their invaluable contributions to society and history.</p>
+                                <br>
+                                <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Creative Labs </p>
+                                <p>🔗 <a href="#">Google Project Page</a></p>
+                                <p>🏆 December 2018 FWA of Day</p>
+                            </div>
+                            <div class="details-gallery">
+                                <video class="gallery-video" controls autoplay muted loop>
+                                    <source src="#" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 5 -->
-                <div class="project-card" data-id="5">
-                    <div class="project-thumbnail" style="background-image: url('/BB_thumb.jpg');" onclick="toggleProject(5)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">CERN & GOOGLE: BIG BANG AR</h3>
-                        <p class="project-category">AR App</p>
+            </section>
+            
+            <section id="about" class="about-section">
+                <h2>ABOUT</h2>
+                <div class="about-content">
+                    <div class="about-image" style="background-image: url('/me.png');"></div>
+                    <div class="about-text">
+                        <p>Laura's journey began in Lisbon, Portugal, where she earned her BA in Communication Design before expanding her expertise with an MA in New Media and a Diploma in Digital Design from VFS. Her professional path has taken her through Vancouver, London, and Toronto, starting with educational flash games for textbook CDROMs in 2011.
+                        Her career trajectory includes leadership roles at Unit9, Nexus, and Jam3, where she developed interactive storytelling projects using AR and web technologies for TikTok, Samsung, eBay, Amazon, Estée Lauder, Pepsi, and The NFB. She also headed the digital department at Warner Bros. Records (UK), driving digital storytelling and innovation for artist campaigns including Muse, Liam Gallagher, and Dua Lipa.
+                        Beyond her commercial work, Laura remains committed to community service through multiple mentorship programs across Portugal, UK, and Canada, while providing pro-bono services to nonprofits such as A Woman's Worth and One Cause a Day.
+                        Fluent in Portuguese, Spanish, and English, Laura brings a truly global perspective to every project she undertakes.</p>
+                        <br>
+                        
+                        <h3 class="about-subtitle">Latest Conferences & Publications</h3>
+                        <br>
+                        <ul class="conference-list">
+                            <li><a href="https://www.youtube.com/watch?ab_channel=TheVR%2FARAssociation%2CSF&v=H2F053daDDI">Microsoft XR Steps Up event</a></li>
+                        </ul>
+                        <br>
+                        
+                        <h3 class="about-subtitle">Video Presentations & Talks</h3>
+                        <div class="video-gallery">
+                            <div class="video-item">
+                                <h4>Microsoft XR Steps Up Event - Immersive Storytelling</h4>
+                                <div class="video-container">
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/H2F053daDDI" title="Laura Cortes at Microsoft XR Steps Up Event" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            
+                            <div class="video-item">
+                                <h4>The Future of Immersive Storytelling Panel</h4>
+                                <div class="video-container">
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Laura Cortes on Immersive Storytelling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <h3 class="about-subtitle">Articles</h3>
+                        <br>
+                        <ul class="article-list">
+                            <li><a href="https://medium.com/@lauracortes/xr-mr-ar-vr-e5c32020e64f">XR, MR, AR, VR…</a></li>
+                            <li><a href="https://blog.webcopyplus.com/2017/05/31/design-is-not-art/?utm_source=facebook&utm_medium=social&utm_campaign=SocialWarfare">Design Is/Not Art</a></li>
+                            <li><a href="https://www.creativebloq.com/ux/the-user-experience-of-virtual-reality-31619635">The Ux of VR</a></li>
+                            <li><a href="https://medium.com/@lauracortes/the-end-of-agency-vs-production-cc13db09d7c0">The End of Agency Vs. Production</a></li>
+                            <li><a href="https://www.unit9.com/project/a-roundtable-discussion-about-virtual-reality/">A Roundtable Discussion About Virtual Reality</a></li>
+                        </ul>
+                        <br>
+                        <p>Get in touch if you have a creative opportunity (or if not, get in touch anyway) <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
+                        <p>You can also message directly on <a href="https://www.linkedin.com/in/lauracortescreative/">LinkedIn</a>.</p>
                     </div>
                 </div>
-                
-                <!-- Project 5 Details -->
-                <div class="project-details" id="project-5">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">CERN & Google: Big Bang AR</h3>
-                            <p class="details-category">📱 AR App, iOS + Android</p>
-                        </div>
-                        <div class="details-description">
-                            <p>💡 The CERN & Google Big Bang AR project is a collaborative effort to use augmented reality to explore the universe's origins from the moments following the Big Bang. This innovative app lets users interact with virtual particles, witness galaxy formation, and delve into fundamental cosmic building blocks. Combining CERN's expertise in particle physics with Google's technology, the project makes complex science accessible. It sparks curiosity about the cosmos, showcasing the potential of AR for science communication and education.</p>
-                            <br>
-                            <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Arts & Culture </p>
-                            <p>🔗 <a href="#">Google Project Page</a></p>
-                            <p>🏆 Nominated for a Children's BAFTA</p>
-                        </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="project-card" data-id="6">
-                    <div class="project-thumbnail" style="background-image: url('/NW_thumb.jpg');" onclick="toggleProject(6)"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">ROSIE RIOS & GOOGLE: NOTABLE WOMEN AR</h3>
-                        <p class="project-category">AR App</p>
-                    </div>
-                </div>
-                
-                <!-- Project 6 Details -->
-                <div class="project-details" id="project-6">
-                    <div class="details-container">
-                        <div class="details-header">
-                            <h3 class="details-title">Rosie Rios & Google: Notable Women AR</h3>
-                            <p class="details-category">📱 AR App, iOS + Android</p>
-                        </div>
-                        <div class="details-description">
-                            <p>💡 The collaboration between Rosie Rios and Google on the Notable Women AR project is a visionary initiative that blends augmented reality technology with celebrating influential women in history. Rosie Rios, former Treasurer of the United States, and Google have combined their expertise to create an interactive AR experience that brings to life the stories of remarkable women. This project allows users to virtually meet and learn about female trailblazers, innovators, and change-makers who have significantly contributed to various fields. By leveraging AR, it offers an engaging platform to educate, inspire, and honour the achievements of these exceptional women, ultimately promoting awareness and recognition of their invaluable contributions to society and history.</p>
-                            <br>
-                            <p>🧠 Freelance Creative Director at Nexus Studios | Client: Google Creative Labs </p>
-                            <p>🔗 <a href="#">Google Project Page</a></p>
-                            <p>🏆 December 2018 FWA of Day</p>
-                        </div>
-                        <div class="details-gallery">
-                            <video class="gallery-video" controls autoplay muted loop>
-                                <source src="#" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="about-section">
-            <h2>ABOUT</h2>
-            <div class="about-content">
-                <div class="about-text">
-<p>Laura's journey began in Lisbon, Portugal, where she earned her BA in Communication Design before expanding her expertise with an MA in New Media and a Diploma in Digital Design from VFS. Her professional path has taken her through Vancouver, London, and Toronto, starting with educational flash games for textbook CDROMs in 2011.
-Her career trajectory includes leadership roles at Unit9, Nexus, and Jam3, where she developed interactive storytelling projects using AR and web technologies for TikTok, Samsung, eBay, Amazon, Estée Lauder, Pepsi, and The NFB. She also headed the digital department at Warner Bros. Records (UK), driving digital storytelling and innovation for artist campaigns including Muse, Liam Gallagher, and Dua Lipa.
-Beyond her commercial work, Laura remains committed to community service through multiple mentorship programs across Portugal, UK, and Canada, while providing pro-bono services to nonprofits such as A Woman's Worth and One Cause a Day.
-Fluent in Portuguese, Spanish, and English, Laura brings a truly global perspective to every project she undertakes.</p>
-                    <br>
-                    <h3 class="about-subtitle">Latest Conferences & Publications</h3>
-                    <br>
-                    <ul class="conference-list">
-                        <li><a href="https://www.youtube.com/watch?ab_channel=TheVR%2FARAssociation%2CSF&v=H2F053daDDI">Microsoft XR Steps Up event</a></li>
-                
-                    </ul>
-                    <br>
-                    <ul class="article-list">
-                        <li><a href="https://medium.com/@lauracortes/xr-mr-ar-vr-e5c32020e64f">XR, MR, AR, VR…</a></li>
-                        <li><a href="https://blog.webcopyplus.com/2017/05/31/design-is-not-art/?utm_source=facebook&utm_medium=social&utm_campaign=SocialWarfare">Design Is/Not Art</a></li>
-                        <li><a href="https://www.creativebloq.com/ux/the-user-experience-of-virtual-reality-31619635">The Ux of VR</a></li>
-                        <li><a href="https://medium.com/@lauracortes/the-end-of-agency-vs-production-cc13db09d7c0">The End of Agency Vs. Production</a></li>
-                        <li> <a href="https://www.unit9.com/project/a-roundtable-discussion-about-virtual-reality/">A Roundtable Discussion About Virtual Reality</a></li>
-                    </ul>
-                    <br>
-                    <p>Get in touch if you have a creative opportunity (or if not, get in touch anyway) <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
-                    <p>You can also message directly on <a href="https://www.linkedin.com/in/lauracortescreative/">LinkedIn</a>.</p>
-                </div>
-                <div class="about-image" style="background-image: url('/me.png');"></div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
     
     <footer id="contact">
-        <h2>CONTACT</h2>
-        <p>For project inquiries or collaborations: <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-behance"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+        <div class="content-container">
+            <h2>CONTACT</h2>
+            <p>For project inquiries or collaborations: <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            </div>
+            <p class="footer-text">© 2025 Laura Cortes. All rights reserved.</p>
+            <p> This site was built in collaboration with Claude.ai</p>
         </div>
-        <p class="footer-text">© 2025 Laura Cortes. All rights reserved.</p>
-        <p> This site was built in collaboration with Claude.ai</p>
     </footer>
     
     <script>
@@ -641,3 +645,5 @@ Fluent in Portuguese, Spanish, and English, Laura brings a truly global perspect
     </script>
 </body>
 </html>
+                    
+                   
