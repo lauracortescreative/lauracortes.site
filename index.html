@@ -161,6 +161,7 @@
         .project-info {
             padding: 15px 0;
         }
+
         
         /* Project Title Styles */
         .project-title {
@@ -176,7 +177,33 @@
             letter-spacing: 0.1em; /* More spacing for category text */
             text-transform: uppercase; /* Uppercase for categories */
         }
+
+     /* Expanded Project Styles - FIXED */
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease, opacity 0.3s ease;
+            opacity: 0;
+            width: 100%;
+            margin-top: -20px;
+            display: none; /* Added to ensure details are hidden on load */
+        }
         
+        .project-details.expanded {
+            max-height: 2000px;
+            opacity: 1;
+            margin-bottom: 40px;
+            display: block; /* Show when expanded */
+        }
+        
+        .details-container {
+            padding: 30px 0;
+        }
+        
+        .details-header {
+            margin-bottom: 20px;
+        }
+     
         /* Details headers */
         .details-title {
             font-size: 32px; /* Increased size */
