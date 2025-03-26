@@ -652,7 +652,7 @@
                             </div>
                                <div class="details-gallery">
                                     <video class="gallery-video" controls muted loop>
-                                        <source src="wild_cities.mp4" type="video/mp4">
+                                        <source data-src="wild_cities.mp4" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
@@ -684,7 +684,7 @@
                             </div>
                             <div class="details-gallery">
                                 <video class="gallery-video" controls muted loop>
-                                    <source src="nfb.mp4" type="video/mp4">
+                                    <source data-src="nfb.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -746,7 +746,7 @@
                             </div>
                             <div class="details-gallery">
                                 <video class="gallery-video" controls muted loop>
-                                    <source src="theboys_720.mp4" type="video/mp4">
+                                    <source data-src="theboys_720.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -775,7 +775,7 @@
                             </div>
                             <div class="details-gallery">
                                 <video class="gallery-video" controls muted loop>
-                                    <source src="bb.mp4" type="video/mp4">
+                                    <source data-src="bb.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -804,7 +804,7 @@
                             </div>
                             <div class="details-gallery">
                                 <video class="gallery-video" controls muted loop>
-                                    <source src="nw.mp4" type="video/mp4">
+                                    <source data-src="nw.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -976,6 +976,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start the subtle animation
     subtleAnimation();
+});
+
+        document.addEventListener('DOMContentLoaded', function() {
+  // Select all videos on the page
+  const videos = document.querySelectorAll('video[data-src]');
+  
+  // Create an intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // If the video is about to enter the viewport
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        // Set the actual source
+        video.src = video.dataset.src;
+        // Stop observing this video
+        observer.unobserve(video);
+      }
+    });
+  }, {rootMargin: "50px"});
+  
+  // Observe each video
+  videos.forEach(video => {
+    observer.observe(video);
+  });
 });
 
     </script>
