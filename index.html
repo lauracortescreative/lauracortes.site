@@ -548,6 +548,36 @@
                 font-size: 16px;
             }
         }
+
+     /* Interactive Gradient Background for Intro Section */
+.intro-section {
+    position: relative;
+    width: 100vw;
+    padding: 80px 0;
+    color: rgba(225, 204, 190, 1);
+    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 100px;
+}
+
+.gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(20, 61, 210, 1), 
+        rgba(128, 0, 128, 1), 
+        rgba(159, 226, 191, 1));
+    background-size: 300% 300%;
+    transition: background-position 0.3s ease-out;
+    z-index: -1;
+}
+
     </style>
     
     <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
@@ -871,6 +901,76 @@
                 });
             });
         });
+
+ //Add this JavaScript code before the closing 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const intro = document.querySelector('.intro-section');
+    
+    // Add the gradient element to the intro section
+    const gradientEl = document.createElement('div');
+    gradientEl.className = 'gradient-background';
+    gradientEl.id = 'gradient';
+    intro.insertBefore(gradientEl, intro.firstChild);
+    
+    // Handle mouse movement
+    intro.addEventListener('mousemove', function(e) {
+        // Calculate position percentages
+        const xPercent = Math.round((e.clientX / window.innerWidth) * 100);
+        const yPercent = Math.round((e.clientY / window.innerHeight) * 100);
+        
+        // Update gradient position based on mouse position
+        gradientEl.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+    });
+    
+    // For mobile/touch devices
+    intro.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            const xPercent = Math.round((touch.clientX / window.innerWidth) * 100);
+            const yPercent = Math.round((touch.clientY / window.innerHeight) * 100);
+            
+            gradientEl.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+        }
+    });
+    
+    // Initialize with a center position
+    gradientEl.style.backgroundPosition = '50% 50%';
+    
+    // Add a subtle animation when no interaction
+    let animationActive = true;
+    let animationX = 50;
+    let animationY = 50;
+    let direction = 1;
+    
+    function subtleAnimation() {
+        if (animationActive) {
+            animationX += 0.1 * direction;
+            animationY += 0.1 * direction;
+            
+            if (animationX > 70 || animationX < 30) {
+                direction *= -1;
+            }
+            
+            gradientEl.style.backgroundPosition = `${animationX}% ${animationY}%`;
+        }
+        requestAnimationFrame(subtleAnimation);
+    }
+    
+    // Pause animation during user interaction
+    intro.addEventListener('mousemove', function() {
+        animationActive = false;
+        // Resume subtle animation after 3 seconds of inactivity
+        clearTimeout(window.animationTimeout);
+        window.animationTimeout = setTimeout(function() {
+            animationActive = true;
+        }, 3000);
+    });
+    
+    // Start the subtle animation
+    subtleAnimation();
+});
+
     </script>
 </body>
 </html>
