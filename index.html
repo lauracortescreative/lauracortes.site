@@ -130,7 +130,15 @@
         }
         
         /* Project Grid */
-        .project-grid {
+       .projects-section h2 {
+            font-size: 36px; /* Larger section title */
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }  
+     
+     .project-grid {
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -566,7 +574,10 @@
         </section>
         
         <div class="content-container">
-            <section id="projects">
+            <section id="projects" class="projects-section">
+
+                 <h2>PROJECTS</h2>
+                
                 <div class="project-grid">
                     <!-- Project 1 -->
                     <div class="project-card" data-id="1">
