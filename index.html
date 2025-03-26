@@ -31,41 +31,42 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-     /* Heading styles - keep Italiana for these */
-h1, h2, h3, .logo, .project-title, .details-title, .about-subtitle {
-    font-family: 'Italiana', serif;
-}
      
-        /* Intro Section Styles */
+     /* Heading styles - keep Italiana for these */
+        h1, h2, h3, .logo, .project-title, .details-title, .about-subtitle {
+            font-family: 'Italiana', serif;
+        }
+     
+    /* Intro Section Styles */
         
      /* Interactive Gradient Background for Intro Section */
-.intro-section {
-    position: relative;
-    width: 100vw;
-    padding: 80px 0;
-    color: rgba(225, 204, 190, 1);
-    overflow: hidden;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-bottom: 100px;
-}
+        .intro-section {
+            position: relative;
+            width: 100vw;
+            padding: 80px 0;
+            color: rgba(225, 204, 190, 1);
+            overflow: hidden;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            margin-bottom: 100px;
+        }
 
-.gradient-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(20, 61, 210, 1), 
-        rgba(114, 97, 209, 1), 
-        rgba(97, 209, 150, 1));
-    background-size: 300% 300%;
-    transition: background-position 0.3s ease-out;
-    z-index: -1;
-}
+        .gradient-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(20, 61, 210, 1), 
+                rgba(114, 97, 209, 1), 
+                rgba(97, 209, 150, 1));
+            background-size: 300% 300%;
+            transition: background-position 0.3s ease-out;
+            z-index: -1;
+        }
         
         .intro-content {
             max-width: 1200px;
@@ -82,11 +83,11 @@ h1, h2, h3, .logo, .project-title, .details-title, .about-subtitle {
         }
         
         .intro-content p {
-    font-family: 'Italiana', serif; /* Keep the intro in Italiana */
-    font-size: 32px;
-    line-height: 1.5;
-    letter-spacing: 0.015em;
-}
+            font-family: 'Italiana', serif; /* Keep the intro in Italiana */
+            font-size: 32px;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+        }
         
         .intro-content em {
             font-style: italic;
@@ -112,11 +113,10 @@ h1, h2, h3, .logo, .project-title, .details-title, .about-subtitle {
 
 
 
-/* Navigation - keep Italiana for elegant menu */
-nav ul li a {
-    font-family: 'Italiana', serif;
-}
-        header {
+        /* Navigation - keep Italiana for elegant menu */
+        
+       
+         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -147,6 +147,7 @@ nav ul li a {
         }
         
         nav ul li a {
+            font-family: 'Italiana', serif;
             text-decoration: none;
             color: #000000;
             font-weight: 400;
@@ -168,7 +169,7 @@ nav ul li a {
             text-transform: uppercase;
         }  
      
-     .project-grid {
+        .project-grid {
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -217,17 +218,7 @@ nav ul li a {
         }
 
      /* Expanded Project Styles - FIXED */
-       details-description {
-    margin-bottom: 40px;
-    line-height: 1.8;
-    max-width: 800px;
-    font-size: 19px;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 300; /* Lighter weight for better readability */
-    letter-spacing: 0.01em; /* Slight adjustment for sans-serif */
-}
-
-        
+       
         .project-details.expanded {
             max-height: 2000px;
             opacity: 1;
@@ -251,16 +242,19 @@ nav ul li a {
             letter-spacing: 0.03em;
         }
  /* Category text - more modern with sans-serif */
-.project-category, .details-category {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 500; /* Medium weight for better distinction */
-}
+        .project-category, .details-category {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500; /* Medium weight for better distinction */
+        }
         
         .details-description {
-            margin-bottom: 40px; /* Increased spacing */
+            margin-bottom: 40px;
             line-height: 1.8;
             max-width: 800px;
-            font-size: 20px; /* Increased size for readability */
+            font-size: 19px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 300; /* Lighter weight for better readability */
+            letter-spacing: 0.01em; /* Slight adjustment for sans-serif */
         }
         
         .details-description a {
@@ -318,10 +312,10 @@ nav ul li a {
         }
         
         .about-text {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-}
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+        }
         
         .about-image {
             width: 300px; /* Larger image */
@@ -579,7 +573,6 @@ nav ul li a {
 
     </style>
     
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
