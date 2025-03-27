@@ -1,1 +1,753 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground - Laura Cortes Creative</title>
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #e1ccbe;
+            color: #333;
+            line-height: 1.7;
+            padding: 0;
+            margin: 0 auto;
+            overflow-x: hidden;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+     
+        /* Heading styles */
+        h1, h2, h3, .logo, .gallery-title, .filter-btn {
+            font-family: 'Italiana', serif;
+        }
+     
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(225, 204, 190, 0.95);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 40px;
+        }
+        
+        nav ul li a {
+            font-family: 'Italiana', serif;
+            text-decoration: none;
+            color: #000000;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            font-size: 22px;
+            letter-spacing: 0.04em;
+        }
+        
+        nav ul li a:hover {
+            color: rgba(20, 61, 210, 1);
+        }
+        
+        nav ul li a.active {
+            color: rgba(20, 61, 210, 1);
+            position: relative;
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(20, 61, 210, 1);
+        }
+        
+        /* Intro Banner */
+        .playground-intro {
+            position: relative;
+            width: 100vw;
+            padding: 60px 0;
+            color: rgba(225, 204, 190, 1);
+            overflow: hidden;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            margin-bottom: 60px;
+            background-color: rgba(20, 61, 210, 1);
+        }
+        
+        .playground-intro-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 80px;
+            font-family: 'Italiana', serif;
+            font-size: 32px;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 40px 0;
+        }
+        
+        .gallery-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 2px solid rgba(20, 61, 210, 1);
+            color: rgba(20, 61, 210, 1);
+            padding: 8px 20px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            background-color: rgba(20, 61, 210, 0.1);
+        }
+        
+        .filter-btn.active {
+            background-color: rgba(20, 61, 210, 1);
+            color: white;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-caption p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            position: relative;
+        }
+        
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-prev {
+            left: -70px;
+        }
+        
+        .lightbox-next {
+            right: -70px;
+        }
+        
+        /* Hide items based on filter */
+        .gallery-item {
+            display: block;
+        }
+        
+        .gallery-item.hidden {
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 60px 20px;
+            text-align: left;
+            border-top: 1px solid rgba(20, 61, 210, 0.2);
+            background-color: rgba(225, 204, 190, 0.5);
+        }
+        
+        footer h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        footer p {
+            font-size: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+        
+        footer a {
+            color: rgba(20, 61, 210, 1);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #333;
+        }
+        
+        .social-links {
+            display: flex;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            margin-right: 30px;
+            color: rgba(20, 61, 210, 1);
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            color: #333;
+            transform: scale(1.1);
+        }
+        
+        .footer-text {
+            font-size: 16px !important;
+            color: #666;
+            margin-top: 30px;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .playground-intro-content {
+                padding: 0 30px;
+                font-size: 24px;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+                margin-right: 25px;
+            }
+            
+            nav ul li a {
+                font-size: 18px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .filter-container {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 6px 15px;
+                font-size: 16px;
+            }
+            
+            .lightbox-prev, .lightbox-next {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lightbox-prev {
+                left: -50px;
+            }
+            
+            .lightbox-next {
+                right: -50px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .lightbox-prev, .lightbox-next {
+                display: none;
+            }
+            
+            .playground-intro-content {
+                font-size: 20px;
+            }
+        }
+    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Laura Cortes</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="playground.html" class="active">Playground</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="playground-intro">
+            <div class="playground-intro-content">
+                <p>Creative experimentation, visual explorations, and digital experiments. This playground showcases various media formats, experimental designs, and artistic expressions that don't fit neatly into client work.</p>
+            </div>
+        </section>
+        
+        <div class="content-container">
+            <section class="gallery-section">
+                <h2>MEDIA GALLERY</h2>
+                
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="image">Images</button>
+                    <button class="filter-btn" data-filter="video">Videos</button>
+                    <button class="filter-btn" data-filter="gif">GIFs</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <!-- Image Items -->
+                    <div class="gallery-item" data-type="image">
+                        <img src="/playground/image1.jpg" alt="Experimental Design 1">
+                        <div class="gallery-caption">
+                            <h3>Geometric Abstractions</h3>
+                            <p>Experimental design exploration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="image">
+                        <img src="/playground/image2.jpg" alt="Experimental Design 2">
+                        <div class="gallery-caption">
+                            <h3>Color Study</h3>
+                            <p>Color harmony exploration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="image">
+                        <img src="/playground/image3.jpg" alt="Experimental Design 3">
+                        <div class="gallery-caption">
+                            <h3>Typography Experiment</h3>
+                            <p>Letter forms and spacing studies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="image">
+                        <img src="/playground/image4.jpg" alt="Experimental Design 4">
+                        <div class="gallery-caption">
+                            <h3>Material Textures</h3>
+                            <p>Exploring physical and digital textures</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Video Items -->
+                    <div class="gallery-item" data-type="video">
+                        <video src="/playground/video1.mp4" muted loop></video>
+                        <div class="gallery-caption">
+                            <h3>Particle Animation</h3>
+                            <p>Motion experiment with particle systems</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="video">
+                        <video src="/playground/video2.mp4" muted loop></video>
+                        <div class="gallery-caption">
+                            <h3>Fluid Dynamics</h3>
+                            <p>Experimental fluid simulation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="video">
+                        <video src="/playground/video3.mp4" muted loop></video>
+                        <div class="gallery-caption">
+                            <h3>Abstract Motion</h3>
+                            <p>Visual rhythm studies</p>
+                        </div>
+                    </div>
+                    
+                    <!-- GIF Items -->
+                    <div class="gallery-item" data-type="gif">
+                        <img src="/playground/gif1.gif" alt="Animated GIF 1">
+                        <div class="gallery-caption">
+                            <h3>Loop Experiment</h3>
+                            <p>Seamless animation loop</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="gif">
+                        <img src="/playground/gif2.gif" alt="Animated GIF 2">
+                        <div class="gallery-caption">
+                            <h3>Morphing Shapes</h3>
+                            <p>Transformation animation study</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-type="gif">
+                        <img src="/playground/gif3.gif" alt="Animated GIF 3">
+                        <div class="gallery-caption">
+                            <h3>Interaction Design</h3>
+                            <p>UI animation prototype</p>
+                        </div>
+                    </div>
+                    
+                    <!-- More items... -->
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-close">&times;</div>
+            <div class="lightbox-media-container"></div>
+            <div class="lightbox-caption"></div>
+        </div>
+        <div class="lightbox-prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-next"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    
+    <footer id="contact">
+        <div class="content-container">
+            <h2>CONTACT</h2>
+            <p>For project inquiries or collaborations: <a href="mailto:lauracortescreative@gmail.com">lauracortescreative@gmail.com</a></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            </div>
+            <p class="footer-text">© 2025 Laura Cortes. All rights reserved.
+           <br>This site was built in collaboration with Claude.ai</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // Filter items based on type
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.dataset.filter;
+                    
+                    // Show/hide items based on filter
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.dataset.type === filterValue) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox functionality
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxContent = document.querySelector('.lightbox-media-container');
+            const lightboxCaption = document.querySelector('.lightbox-caption');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            let currentIndex = 0;
+            
+            // Open lightbox when gallery item is clicked
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentIndex = index;
+                    openLightbox(this);
+                });
+            });
+            
+            // Function to open lightbox
+            function openLightbox(item) {
+                // Get caption
+                const caption = item.querySelector('.gallery-caption').innerHTML;
+                lightboxCaption.innerHTML = caption;
+                
+                // Get media
+                const type = item.dataset.type;
+                let mediaElement;
+                
+                if (type === 'video') {
+                    const videoSrc = item.querySelector('video').src;
+                    mediaElement = document.createElement('video');
+                    mediaElement.src = videoSrc;
+                    mediaElement.controls = true;
+                    mediaElement.autoplay = true;
+                } else {
+                    const imgSrc = item.querySelector('img').src;
+                    mediaElement = document.createElement('img');
+                    mediaElement.src = imgSrc;
+                    mediaElement.alt = item.querySelector('img').alt;
+                }
+                
+                // Clear previous content and add new media
+                lightboxContent.innerHTML = '';
+                lightboxContent.appendChild(mediaElement);
+                
+                // Show lightbox
+                lightbox.classList.add('active');
+                
+                // Prevent scrolling of body
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Close on click outside content
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Navigate to previous item
+            lightboxPrev.addEventListener('click', function() {
+                navigateLightbox(-1);
+            });
+            
+            // Navigate to next item
+            lightboxNext.addEventListener('click', function() {
+                navigateLightbox(1);
+            });
+            
+            // Function to navigate lightbox
+            function navigateLightbox(direction) {
+                // Get visible items
+                const visibleItems = Array.from(galleryItems).filter(item => !item.classList.contains('hidden'));
+                
+                // Find current item index among visible items
+                let visibleIndex = visibleItems.findIndex(item => {
+                    // Match the current displayed item
+                    const currentMedia = lightboxContent.firstChild;
+                    if (currentMedia.tagName === 'VIDEO') {
+                        return item.querySelector('video')?.src === currentMedia.src;
+                    } else {
+                        return item.querySelector('img')?.src === currentMedia.src;
+                    }
+                });
+                
+                // Calculate new index
+                visibleIndex = (visibleIndex + direction + visibleItems.length) % visibleItems.length;
+                
+                // Open new item
+                openLightbox(visibleItems[visibleIndex]);
+            }
+            
+            // Hover effect for gallery videos
+            const videoItems = document.querySelectorAll('.gallery-item[data-type="video"]');
+            
+            videoItems.forEach(item => {
+                const video = item.querySelector('video');
+                
+                item.addEventListener('mouseenter', function() {
+                    video.play();
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
