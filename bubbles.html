@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Skills Diagram</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+      height: 600px;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      background-color: #222;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      border-radius: 8px;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .bubble h3 {
+      margin: 0 0 5px;
+    }
+
+    .bubble1 {
+      top: 0;
+      left: 50%;
+      background-color: #001aff;
+      transform: translateX(-50%);
+    }
+
+    .bubble2 {
+      bottom: 0;
+      left: 0;
+      background-color: #4ed9a5;
+      transform: translateY(0%);
+    }
+
+    .bubble3 {
+      bottom: 0;
+      right: 0;
+      background-color: #8c74e8;
+      transform: translateY(0%);
+    }
+
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background-color: white;
+      transform-origin: top;
+    }
+
+    .line1 {
+      top: calc(50% - 40px);
+      left: 50%;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .line2 {
+      top: calc(50% + 40px);
+      left: calc(50% - 40px);
+      transform: rotate(135deg);
+    }
+
+    .line3 {
+      top: calc(50% + 40px);
+      left: calc(50% + 40px);
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="center">LC</div>
+
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+
+    <div class="bubble bubble1">
+      <div>
+        <h3>Frontend</h3>
+        HTML, CSS, JavaScript, React
+      </div>
+    </div>
+
+    <div class="bubble bubble2">
+      <div>
+        <h3>Design</h3>
+        UI/UX, Figma, Web Animations
+      </div>
+    </div>
+
+    <div class="bubble bubble3">
+      <div>
+        <h3>Tools</h3>
+        Git, Webpack, APIs
+      </div>
+    </div>
+  </div>
+</body>
+</html>
