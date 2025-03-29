@@ -2,49 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Skills Diagram</title>
+  <title>Responsive Skills Diagram</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: #111;
       height: 100%;
-      overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
     }
 
     .container {
       position: relative;
       width: 100vw;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .center {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background: #222;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
     }
 
     .bubble {
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 40vw;
+      max-width: 200px;
+      aspect-ratio: 1 / 1;
       background: #444;
       color: white;
       text-align: center;
       padding: 20px;
+      box-sizing: border-box;
       border-radius: 50% 60% 55% 45% / 55% 60% 50% 45%;
       display: flex;
       align-items: center;
@@ -66,28 +50,28 @@
 
     .bubble1 {
       background: #001aff;
-      top: 10%;
-      left: 42.5%;
-    
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .bubble2 {
       background: #4ed9a5;
       bottom: 10%;
-      left: 15%;
+      left: 5%;
     }
 
     .bubble3 {
       background: #8c74e8;
       bottom: 10%;
-      right: 15%;
+      right: 5%;
     }
 
     .line {
       position: absolute;
       width: 2px;
       background: white;
-      z-index: 1;
+      z-index: 0;
     }
 
     @keyframes pulse {
@@ -98,12 +82,18 @@
         border-radius: 60% 50% 60% 40% / 50% 55% 60% 50%;
       }
     }
+
+    @media (max-width: 600px) {
+      .bubble {
+        width: 45vw;
+        padding: 10px;
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    
-
+  <div class="container" id="container">
     <div class="bubble bubble1" id="bubble1">
       <div>
         <h3>Immersive</h3>
@@ -127,32 +117,24 @@
 
     <div class="line" id="line1"></div>
     <div class="line" id="line2"></div>
-    <div class="line" id="line3"></div>
   </div>
 
   <script>
     function connectLines() {
-      const center = document.getElementById("center");
-      const bubbles = [
-        document.getElementById("bubble1"),
-        document.getElementById("bubble2"),
-        document.getElementById("bubble3")
-      ];
-      const lines = [
-        document.getElementById("line1"),
-        document.getElementById("line2"),
-        document.getElementById("line3")
-      ];
+      const b1 = document.getElementById("bubble1");
+      const b2 = document.getElementById("bubble2");
+      const b3 = document.getElementById("bubble3");
+      const l1 = document.getElementById("line1");
+      const l2 = document.getElementById("line2");
 
-      bubbles.forEach((bubble, i) => {
-        const line = lines[i];
-        const centerRect = center.getBoundingClientRect();
-        const bubbleRect = bubble.getBoundingClientRect();
+      function connect(el1, el2, line) {
+        const r1 = el1.getBoundingClientRect();
+        const r2 = el2.getBoundingClientRect();
 
-        const x1 = centerRect.left + centerRect.width / 2;
-        const y1 = centerRect.top + centerRect.height / 2;
-        const x2 = bubbleRect.left + bubbleRect.width / 2;
-        const y2 = bubbleRect.top + bubbleRect.height / 2;
+        const x1 = r1.left + r1.width / 2;
+        const y1 = r1.top + r1.height / 2;
+        const x2 = r2.left + r2.width / 2;
+        const y2 = r2.top + r2.height / 2;
 
         const length = Math.hypot(x2 - x1, y2 - y1);
         const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
@@ -162,7 +144,10 @@
         line.style.left = `${x1}px`;
         line.style.top = `${y1}px`;
         line.style.transformOrigin = "0 0";
-      });
+      }
+
+      connect(b1, b2, l1);
+      connect(b1, b3, l2);
     }
 
     window.addEventListener("resize", connectLines);
