@@ -4,136 +4,169 @@
   <meta charset="UTF-8">
   <title>Portfolio Skills Diagram</title>
   <style>
-    body {
-      background-color: #111;
-      color: white;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    html, body {
       margin: 0;
+      padding: 0;
+      background: #111;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .container {
       position: relative;
-      width: 600px;
-      height: 600px;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .center {
       position: absolute;
-      top: 50%;
-      left: 50%;
       width: 80px;
       height: 80px;
-      background-color: #222;
+      background: #222;
       color: white;
       font-size: 24px;
       font-weight: bold;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transform: translate(-50%, -50%);
-      border-radius: 8px;
+      z-index: 2;
     }
 
     .bubble {
       position: absolute;
       width: 180px;
       height: 180px;
-      border-radius: 50%;
+      background: #444;
       color: white;
+      text-align: center;
       padding: 20px;
-      box-sizing: border-box;
+      border-radius: 50% 60% 55% 45% / 55% 60% 50% 45%;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-size: 16px;
-      font-weight: normal;
+      transition: transform 0.3s ease;
+      animation: pulse 5s infinite ease-in-out;
+      cursor: pointer;
+    }
+
+    .bubble:hover {
+      transform: scale(1.05);
+      filter: brightness(1.2);
     }
 
     .bubble h3 {
       margin: 0 0 5px;
+      font-size: 1.1em;
     }
 
     .bubble1 {
-      top: 0;
+      background: #001aff;
+      top: 10%;
       left: 50%;
-      background-color: #001aff;
       transform: translateX(-50%);
     }
 
     .bubble2 {
-      bottom: 0;
-      left: 0;
-      background-color: #4ed9a5;
-      transform: translateY(0%);
+      background: #4ed9a5;
+      bottom: 10%;
+      left: 15%;
     }
 
     .bubble3 {
-      bottom: 0;
-      right: 0;
-      background-color: #8c74e8;
-      transform: translateY(0%);
+      background: #8c74e8;
+      bottom: 10%;
+      right: 15%;
     }
 
     .line {
       position: absolute;
       width: 2px;
-      height: 100px;
-      background-color: white;
-      transform-origin: top;
+      background: white;
+      z-index: 1;
     }
 
-    .line1 {
-      top: calc(50% - 40px);
-      left: 50%;
-      transform: translateX(-50%) rotate(0deg);
-    }
-
-    .line2 {
-      top: calc(50% + 40px);
-      left: calc(50% - 40px);
-      transform: rotate(135deg);
-    }
-
-    .line3 {
-      top: calc(50% + 40px);
-      left: calc(50% + 40px);
-      transform: rotate(45deg);
+    @keyframes pulse {
+      0%, 100% {
+        border-radius: 50% 60% 55% 45% / 55% 60% 50% 45%;
+      }
+      50% {
+        border-radius: 60% 50% 60% 40% / 50% 55% 60% 50%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="center">LC</div>
+    <div class="center" id="center">LC</div>
 
-    <div class="line line1"></div>
-    <div class="line line2"></div>
-    <div class="line line3"></div>
-
-    <div class="bubble bubble1">
+    <div class="bubble bubble1" id="bubble1">
       <div>
         <h3>Immersive</h3>
         XR, AR, VR, Storyliving
       </div>
     </div>
 
-    <div class="bubble bubble2">
+    <div class="bubble bubble2" id="bubble2">
       <div>
         <h3>Interactive</h3>
-       Web3, UX/Creative for Product Design
+        Web3, UX/Creative for Product Design
       </div>
     </div>
 
-    <div class="bubble bubble3">
+    <div class="bubble bubble3" id="bubble3">
       <div>
         <h3>AI</h3>
         Original content, transmedia content for IP holders
       </div>
     </div>
+
+    <div class="line" id="line1"></div>
+    <div class="line" id="line2"></div>
+    <div class="line" id="line3"></div>
   </div>
+
+  <script>
+    function connectLines() {
+      const center = document.getElementById("center");
+      const bubbles = [
+        document.getElementById("bubble1"),
+        document.getElementById("bubble2"),
+        document.getElementById("bubble3")
+      ];
+      const lines = [
+        document.getElementById("line1"),
+        document.getElementById("line2"),
+        document.getElementById("line3")
+      ];
+
+      bubbles.forEach((bubble, i) => {
+        const line = lines[i];
+        const centerRect = center.getBoundingClientRect();
+        const bubbleRect = bubble.getBoundingClientRect();
+
+        const x1 = centerRect.left + centerRect.width / 2;
+        const y1 = centerRect.top + centerRect.height / 2;
+        const x2 = bubbleRect.left + bubbleRect.width / 2;
+        const y2 = bubbleRect.top + bubbleRect.height / 2;
+
+        const length = Math.hypot(x2 - x1, y2 - y1);
+        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+        line.style.width = `${length}px`;
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.left = `${x1}px`;
+        line.style.top = `${y1}px`;
+        line.style.transformOrigin = "0 0";
+      });
+    }
+
+    window.addEventListener("resize", connectLines);
+    window.addEventListener("load", connectLines);
+  </script>
 </body>
 </html>
