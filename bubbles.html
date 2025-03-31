@@ -22,7 +22,7 @@
     .bubble {
       position: absolute;
       width: 40vw;
-      max-width: 500px;
+      max-width: 300px;
       aspect-ratio: 1 / 1;
       background: #444;
       color: white;
@@ -51,9 +51,17 @@
     .bubble1 {
       background: #001aff;
       top: 20%;
-      left: 43%;
-  
+      left: 50%;
+      transform: translateX(-50%);
+
     }
+
+     .bubble1:hover {
+      transform: scale(1.05);
+      filter: brightness(1.2);
+      transform: translateX(-50%);
+    }
+
 
     .bubble2 {
       background: #4ed9a5;
